@@ -1,10 +1,10 @@
 <div id="MainPage" fxLayout="column">
   <app-nav (menuButtonClick)="openSidenav()"></app-nav>
-  <mat-sidenav-container fxFlex fxLayout="column">
-    <mat-sidenav class="sidenav" mode="side" [opened]="sidenavOpened" fxFlex>
+  <mat-sidenav-container fxFlex>
+    <mat-sidenav class="sidenav" mode="side" [opened]="sidenavOpened">
       <app-sidenav></app-sidenav>
     </mat-sidenav>
-    <mat-sidenav-content fxFlex="30">
+    <mat-sidenav-content>
       <div id="PageContent">
         <section class="mat-typography title-group">
           <router-outlet></router-outlet>
