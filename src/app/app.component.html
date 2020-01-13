@@ -1,37 +1,15 @@
-<!-- <div id="MainPage" fxFlex fxLayout="column"> -->
-  <app-nav></app-nav>
-  <mat-sidenav-container>
-    <!-- Sidenav -->
-    <mat-sidenav mode="side" [fixedInViewport]="true" [fixedTopGap] opened>
-      <mat-nav-list>
-        <a mat-list-item> <mat-icon>dashboard</mat-icon> Dashboard </a>
-        <a mat-list-item> <mat-icon>person</mat-icon> User Profile </a>
-        <a mat-list-item> <mat-icon>content_paste</mat-icon> Table List </a>
-        <a mat-list-item> <mat-icon>library_books</mat-icon> Typography </a>
-        <a mat-list-item> <mat-icon>location_on</mat-icon> Maps </a>
-        <a mat-list-item> <mat-icon>calendar_today</mat-icon> Calendar </a>
-      </mat-nav-list>
+<div id="MainPage" fxLayout="column">
+  <app-nav (menuButtonClick)="openSidenav()"></app-nav>
+  <mat-sidenav-container fxFlex fxLayout="column">
+    <mat-sidenav class="sidenav" mode="side" [opened]="sidenavOpened" fxFlex>
+      <app-sidenav></app-sidenav>
     </mat-sidenav>
-
-    <!-- Main content -->
-    <mat-sidenav-content>
+    <mat-sidenav-content fxFlex="30">
+      <div id="PageContent">
         <section class="mat-typography title-group">
-            <h1>Heading Goes Here</h1>
-            <mat-divider></mat-divider>
-          </section>
-        <router-outlet></router-outlet>
+          <router-outlet></router-outlet>
+        </section>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  <!-- <div id="PageContent" fxLayout="row wrap" fxLayoutAlign="center">
-    <div
-      id="MainContainer"
-      fxLayout="column"
-      fxLayoutAlign="space-around stretch"
-      fxFlex="66"
-      fxFlex.sm="75"
-      fxFlex.xs="100"
-    >
-      <router-outlet></router-outlet>
-    </div>
-  </div> -->
-<!-- </div> -->
+</div>

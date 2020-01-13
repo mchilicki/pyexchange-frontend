@@ -11,8 +11,6 @@
 // hue. Available color palettes: https://material.io/design/color/
 $pyexchange-primary: mat-palette($mat-pink, 500, 200, 800);
 $pyexchange-accent:  mat-palette($mat-gray, 600, 300, 800);
-$pyexchange-background:  mat-palette($mat-gray, 800);
-//$pyexchange-content-background:  map-get(white);
 
 // The warn palette is optional (defaults to red).
 $pyexchange-warn:    mat-palette($mat-red);
@@ -20,7 +18,12 @@ $pyexchange-warn:    mat-palette($mat-red);
 // Create the theme object (a Sass map containing all of the palettes).
 $pyexchange-theme: mat-dark-theme($pyexchange-primary, $pyexchange-accent, $pyexchange-warn);
 
+$pyexchange-typography: mat-typography-config(
+  $font-family: 'Cabin'
+);
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($pyexchange-theme);
+@include angular-material-typography($pyexchange-typography);

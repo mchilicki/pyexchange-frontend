@@ -1,17 +1,16 @@
 @import '~@angular/material/theming';
-@import './../theme.scss';
 
 :host {
-    // #MainPage {
-    //     height: 100vh;
-    //     //background-color: mat-color($pyexchange-background);
+    #MainPage {
+        height: 100vh;
 
-    //     #PageContent {
-    //         #MainContainer {
-    //             @include mat-elevation(2);
-    //             //background-color: mat-color($pyexchange-content-background);
-    //             padding: 1.2rem;
-    //         }
-    //     }
-    // }
+        .sidenav {
+            @include mat-elevation(4);
+            border: none;
+        }
+
+        #PageContent {
+            padding: 1.2rem;
+        }
+    }
 }
