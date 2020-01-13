@@ -8,12 +8,11 @@ import { NavItem } from 'src/app/models/infrastructure/nav-item';
 })
 export class SidenavComponent implements OnInit {
   navItems: NavItem[] = [
-    new NavItem('Dashboard', 'dashboard'),
-    new NavItem('User Profile', 'person'),
-    new NavItem('Table List', 'content_paste'),
-    new NavItem('Typography', 'library_books'),
-    new NavItem('Maps', 'location_on'),
-    new NavItem('Calendar', 'calendar_today')
+    new NavItem('Home', 'home', ''),
+    new NavItem('Currency table', 'attach_money', 'currencies'),
+    new NavItem('My account', 'person', 'account'),
+    new NavItem('Sign in', 'exit_to_app', 'login'),
+    new NavItem('Sign out', 'power_settings_new', 'logout', false)
   ];
 
   @Input() showLabels = true;
@@ -23,4 +22,7 @@ export class SidenavComponent implements OnInit {
   ngOnInit() {
   }
 
+  getVisibleNavItems(): NavItem[] {
+    return this.navItems.filter(x => x.visible);
+  }
 }

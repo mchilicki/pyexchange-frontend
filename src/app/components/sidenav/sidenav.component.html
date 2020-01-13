@@ -1,5 +1,11 @@
 <mat-nav-list class="nav-list">
-  <a class="nav-item" *ngFor="let item of navItems" mat-list-item>
+  <a
+    [routerLink]="[item.path ? item.path : '']"
+    [title]="item.name"
+    class="nav-item"
+    *ngFor="let item of getVisibleNavItems()"
+    mat-list-item
+  >
     <span class="icon">
       <mat-icon *ngIf="item.icon">{{ item.icon }}</mat-icon>
     </span>
