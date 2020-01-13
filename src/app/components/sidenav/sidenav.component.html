@@ -1,8 +1,8 @@
 <mat-nav-list class="nav-list">
   <a class="nav-item" *ngFor="let item of navItems" mat-list-item>
-    <span class="icon-container">
+    <span class="icon">
       <mat-icon *ngIf="item.icon">{{ item.icon }}</mat-icon>
     </span>
-    {{ item.name }}
+    <span class="label" *ngIf="showLabels">{{ item.name }}</span>
   </a>
 </mat-nav-list>
