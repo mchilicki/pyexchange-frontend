@@ -1,7 +1,7 @@
 <div id="MainPage" fxLayout="column">
   <app-nav (menuButtonClick)="openSidenav()"></app-nav>
   <mat-sidenav-container fxFlex>
-    <mat-sidenav class="sidenav" mode="side" [opened]="sidenavOpened">
+    <mat-sidenav class="sidenav" fxShow [fxShow.lt-md]="sidenavOpened" mode="side" opened>
       <app-sidenav></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
