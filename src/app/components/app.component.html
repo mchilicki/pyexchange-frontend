@@ -5,8 +5,14 @@
       <app-sidenav [showLabels]="sidenavOpened"></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div id="PageContent">
-        <section class="mat-typography title-group">
+      <div id="PageContent" fxLayout="row">
+        <section
+          class="mat-typography title-group"
+          fxFlex="50"
+          fxFlexOffset="25"
+          fxFlex.lt-md="90"
+          fxFlexOffset.lt-md="5"
+        >
           <router-outlet></router-outlet>
         </section>
       </div>
