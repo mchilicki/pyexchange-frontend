@@ -1,0 +1,14 @@
+<mat-nav-list class="nav-list">
+  <a
+    [routerLink]="[item.path ? item.path : '']"
+    [title]="item.name"
+    class="nav-item"
+    *ngFor="let item of getVisibleNavItems()"
+    mat-list-item
+  >
+    <span class="icon">
+      <mat-icon *ngIf="item.icon" color="accent">{{ item.icon }}</mat-icon>
+    </span>
+    <span class="label" *ngIf="showLabels">{{ item.name }}</span>
+  </a>
+</mat-nav-list>

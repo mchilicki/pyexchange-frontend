@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+:host {
+    #MainPage {
+        height: 100vh;
+
+        .sidenav {
+            @include mat-elevation(4);
+            border: none;
+        }
+
+        #PageContent {
+            padding: 1.2rem 0;
+        }
+    }
+}
