@@ -1,0 +1,62 @@
+<h1>Create a new account</h1>
+<div fxLayout="row" fxLayout.lt-lg="column">
+  <div fxFlex>
+    <form
+      fxLayout="column"
+      fxLayoutAlign="space-between stretch"
+      [formGroup]="form"
+    >
+      <mat-form-field
+        appearance="fill"
+        hintLabel="1-150 letters, digits and '@.+-' characters"
+      >
+        <mat-label>User name</mat-label>
+        <input
+          matInput
+          #usernameInput
+          placeholder="User name"
+          formControlName="username"
+        />
+        <mat-hint align="end"
+          >{{ usernameInput.value?.length || 0 }}/150</mat-hint
+        >
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="E-mail" formControlName="email" />
+      </mat-form-field>
+      <mat-form-field
+        appearance="fill"
+        hintLabel="8-30 letters, digits and special characters"
+      >
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          #passwordInput
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <mat-hint align="end"
+          >{{ passwordInput.value?.length || 0 }}/30</mat-hint
+        >
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!form.valid"
+        (click)="submit()"
+      >
+        Sign up
+      </button>
+    </form>
+  </div>
+  <div class="description" fxFlex>
+    <h2>Exchange our money!</h2>
+    <ul>
+      <li>Find the best offers</li>
+      <li>Manage your account</li>
+      <li>Get rewards</li>
+    </ul>
+  </div>
+</div>

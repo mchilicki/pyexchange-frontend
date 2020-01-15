@@ -12,7 +12,8 @@ export class SidenavComponent implements OnInit {
     new NavItem('Currency table', 'attach_money', 'currencies'),
     new NavItem('My account', 'person', 'account'),
     new NavItem('Sign in', 'exit_to_app', 'login'),
-    new NavItem('Sign out', 'power_settings_new', 'logout', false)
+    new NavItem('Sign out', 'power_settings_new', 'logout', false),
+    new NavItem('Sign up', 'person_add', 'register')
   ];
 
   @Input() showLabels = true;

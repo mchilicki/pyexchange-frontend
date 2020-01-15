@@ -16,7 +16,7 @@ $pyexchange-accent:  mat-palette($mat-cyan, 400, 200, 700);
 $pyexchange-warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$pyexchange-theme: mat-dark-theme($pyexchange-primary, $pyexchange-accent, $pyexchange-warn);
+$pyexchange-theme: mat-light-theme($pyexchange-primary, $pyexchange-accent, $pyexchange-warn);
 
 $pyexchange-typography: mat-typography-config(
   $font-family: 'Cabin'

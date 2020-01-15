@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import 'theme.scss';
 
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; }
@@ -6,4 +7,8 @@ body { margin: 0; font-family: Cabin, "Helvetica Neue", sans-serif; }
 
 .table {
     @include mat-elevation(4);
+}
+
+.snack-bar-warning {
+    background-color: mat-color($pyexchange-warn);
 }
