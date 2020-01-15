@@ -8,13 +8,7 @@ import { CurrencyService } from 'src/app/services/currency.service';
   styleUrls: ['./currency-table.component.scss']
 })
 export class CurrencyTableComponent implements OnInit {
-  data: CurrencyListItem[] = [{
-    id: 1,
-    name: 'dolar amerykański',
-    code: 'USD',
-    unit: 1,
-    purchase_price: 3.8441
-  }];
+  data: CurrencyListItem[] = [];
   columnsToDisplay = ['name', 'code', 'unit', 'purchase_price'];
 
   constructor(private currencyService: CurrencyService) { }
