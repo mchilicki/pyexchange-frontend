@@ -13,20 +13,26 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 import { CookieService } from 'ngx-cookie-service';
+import { CurrencyTableComponent } from './components/currencies/currency-table/currency-table.component';
+import { CurrencyService } from './services/currency.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    SidenavComponent
+    SidenavComponent,
+    CurrencyTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
     FlexLayoutModule,
@@ -34,9 +40,10 @@ import { CookieService } from 'ngx-cookie-service';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, CurrencyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

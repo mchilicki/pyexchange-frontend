@@ -1,0 +1,25 @@
+<h1>Currency table</h1>
+<mat-table [dataSource]="data" class="table">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="code">
+    <mat-header-cell *matHeaderCellDef>Code</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.code }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="unit">
+    <mat-header-cell *matHeaderCellDef>Unit</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.unit }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="purchase_price">
+    <mat-header-cell *matHeaderCellDef>Purchase price</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.purchase_price }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let rowData; columns: columnsToDisplay"></mat-row>
+</mat-table>
