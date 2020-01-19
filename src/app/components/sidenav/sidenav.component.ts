@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NavItem } from 'src/app/models/infrastructure/nav-item';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,23 +9,35 @@ import { NavItem } from 'src/app/models/infrastructure/nav-item';
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
-  navItems: NavItem[] = [
-    new NavItem('Home', 'home', ''),
-    new NavItem('Currency table', 'attach_money', 'currencies'),
-    new NavItem('My account', 'person', 'account'),
-    new NavItem('Sign in', 'exit_to_app', 'login'),
-    new NavItem('Sign out', 'power_settings_new', 'logout', false),
-    new NavItem('Sign up', 'person_add', 'register')
-  ];
+  private loggedIn = false;
+  navItems: NavItem[] = [];
 
   @Input() showLabels = true;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
-  getVisibleNavItems(): NavItem[] {
-    return this.navItems.filter(x => x.visible);
+  ngOnInit() {
+    this.authService.isLoggedIn.subscribe(token => {
+      this.loggedIn = token;
+      this.getNavItems();
+    });
+  }
+
+  getNavItems() {
+    this.navItems = [
+      new NavItem({ name: 'Home', icon: 'home', path: '' }),
+      new NavItem({ name: 'Currency table', icon: 'attach_money', path: 'currencies' }),
+      new NavItem({ name: 'My account', icon: 'person', path: 'account', visible: this.loggedIn }),
+      new NavItem({ name: 'Sign in', icon: 'exit_to_app', path: 'login', visible: !this.loggedIn }),
+      new NavItem({ name: 'Sign out', icon: 'power_settings_new', action: () => this.logout(), visible: this.loggedIn }),
+      new NavItem({ name: 'Sign up', icon: 'person_add', path: 'register', visible: !this.loggedIn })
+    ];
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

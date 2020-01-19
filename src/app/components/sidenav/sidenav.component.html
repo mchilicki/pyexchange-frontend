@@ -2,8 +2,9 @@
   <a
     [routerLink]="[item.path ? item.path : '']"
     [title]="item.name"
+    (click)="item.action && item.action()"
     class="nav-item"
-    *ngFor="let item of getVisibleNavItems()"
+    *ngFor="let item of navItems | visible"
     mat-list-item
   >
     <span class="icon">

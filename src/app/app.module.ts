@@ -22,11 +22,15 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CookieService } from 'ngx-cookie-service';
 import { CurrencyTableComponent } from './components/currencies/currency-table/currency-table.component';
 import { CurrencyService } from './services/currency.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './components/users/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { SnackbarService } from './services/infrastructure/snack-bar.service';
+import { LoginComponent } from './components/users/login/login.component';
+import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { VisiblePipe } from './pipes/visible.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import { SnackbarService } from './services/infrastructure/snack-bar.service';
     HomeComponent,
     SidenavComponent,
     CurrencyTableComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    VisiblePipe
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,8 @@ import { SnackbarService } from './services/infrastructure/snack-bar.service';
     MatInputModule,
     MatSnackBarModule
   ],
-  providers: [CookieService, CurrencyService, UserService, SnackbarService],
+  providers: [CookieService, CurrencyService, UserService, SnackbarService, AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
