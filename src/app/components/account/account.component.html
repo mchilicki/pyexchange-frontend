@@ -1,0 +1,19 @@
+<div *ngIf="user" fxLayout="column" fxLayoutGap="20px">
+  <header fxLayout="row" fxLayout.lt-md="column">
+    <div fxFlex>
+      <h1>Hello {{ user.username }}!</h1>
+    </div>
+    <div class="your-balance">
+      <h2 class="your-balance-header">
+        <mat-icon>monetization_on</mat-icon>
+        {{ user.profile.money | currency: "PLN":"code" }}
+      </h2>
+      <span class="mat-small">Your money</span>
+    </div>
+  </header>
+  <mat-divider></mat-divider>
+  <section>
+      <h1>Your currencies</h1>
+      <app-currency-table [data]="user.currencies"></app-currency-table>
+  </section>
+</div>

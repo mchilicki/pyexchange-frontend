@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app.component';
@@ -31,6 +33,10 @@ import { LoginComponent } from './components/users/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { VisiblePipe } from './pipes/visible.pipe';
+import { AccountComponent } from './components/account/account.component';
+import { CurrencyPageComponent } from './components/currencies/currency-page/currency-page.component';
+
+registerLocaleData(localePl, 'pl');
 
 @NgModule({
   declarations: [
@@ -39,9 +45,11 @@ import { VisiblePipe } from './pipes/visible.pipe';
     HomeComponent,
     SidenavComponent,
     CurrencyTableComponent,
+    CurrencyPageComponent,
     RegisterComponent,
     LoginComponent,
-    VisiblePipe
+    VisiblePipe,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,9 @@ import { VisiblePipe } from './pipes/visible.pipe';
     MatSnackBarModule
   ],
   providers: [CookieService, CurrencyService, UserService, SnackbarService, AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'pl' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

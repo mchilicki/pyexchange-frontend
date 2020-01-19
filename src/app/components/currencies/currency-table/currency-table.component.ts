@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CurrencyListItem } from 'src/app/models/currency/currency-list-item';
-import { CurrencyService } from 'src/app/services/currency.service';
 
 @Component({
   selector: 'app-currency-table',
@@ -8,15 +7,11 @@ import { CurrencyService } from 'src/app/services/currency.service';
   styleUrls: ['./currency-table.component.scss']
 })
 export class CurrencyTableComponent implements OnInit {
-  data: CurrencyListItem[] = [];
-  columnsToDisplay = ['name', 'code', 'unit', 'purchase_price'];
+  @Input() data: CurrencyListItem[] = [];
+  columnsToDisplay = ['name', 'code', 'unit', 'purchase_price', 'actions'];
 
-  constructor(private currencyService: CurrencyService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.currencyService.getCurrencies().subscribe(data => {
-      this.data = data.results;
-    });
-  }
+  ngOnInit() { }
 
 }
