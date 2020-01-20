@@ -8,6 +8,7 @@ import { Currency } from 'src/app/models/currency/currency';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { CurrencyAmount } from 'src/app/models/currency/currency-amount';
 import { SnackbarService as SnackBarService } from 'src/app/services/infrastructure/snack-bar.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-currency-table',
@@ -16,14 +17,29 @@ import { SnackbarService as SnackBarService } from 'src/app/services/infrastruct
 })
 export class CurrencyTableComponent implements OnInit {
   @Input() data: CurrencyListItem[] = [];
-  columnsToDisplay = ['name', 'code', 'unit', 'purchase_price', 'actions'];
+  private loggedIn = false;
+  columnsToDisplay = [];
   defaults = defaults;
 
   constructor(private currencyService: CurrencyService,
               private snackBarService: SnackBarService,
+              private authService: AuthService,
               private dialog: MatDialog) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.authService.isLoggedIn.subscribe(isAuthenticated => {
+      this.loggedIn = isAuthenticated;
+      this.setupTable();
+    });
+  }
+
+  setupTable() {
+    if (this.loggedIn) {
+      this.columnsToDisplay = ['name', 'code', 'unit', 'purchase_price', 'actions'];
+    } else {
+      this.columnsToDisplay = ['name', 'code', 'unit', 'purchase_price'];
+    }
+  }
 
   openBuyCurrencyDialog(currency: CurrencyListItem) {
     const dialogRef = this.dialog.open(CurrencyDialogComponent, {
