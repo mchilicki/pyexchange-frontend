@@ -33,7 +33,7 @@
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button mat-raised-button color="primary" ngClass.xs="small-button">
+      <button mat-raised-button color="primary" ngClass.xs="small-button" (click)="openBuyCurrencyDialog(element)">
         Buy
       </button>
     </mat-cell>
