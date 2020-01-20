@@ -24,7 +24,11 @@
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button mat-raised-button color="primary">Buy</button>
+      <button
+        mat-raised-button
+        color="primary"
+        ngClass.xs="small-button"
+      >Buy</button>
     </mat-cell>
   </ng-container>
 

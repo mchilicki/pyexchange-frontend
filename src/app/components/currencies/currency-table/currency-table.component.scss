@@ -1,9 +1,5 @@
 :host {
-    .table {
-        min-width: 450px;
-
-        .mat-column-actions {
-            flex: 0 0 70px;
-        }
+    .mat-column-actions {
+        flex: 0 0 70px;
     }
 }
