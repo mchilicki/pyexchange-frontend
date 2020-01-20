@@ -19,8 +19,8 @@ export class SidenavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.isLoggedIn.subscribe(token => {
-      this.loggedIn = token;
+    this.authService.isLoggedIn.subscribe(isAuthenticated => {
+      this.loggedIn = isAuthenticated;
       this.getNavItems();
     });
   }

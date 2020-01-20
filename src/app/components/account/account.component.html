@@ -1,0 +1,25 @@
+<div *ngIf="user" fxLayout="column" fxLayoutGap="20px">
+  <header fxLayout="row" fxLayout.lt-md="column">
+    <div fxFlex>
+      <h1>Hello {{ user.username }}!</h1>
+    </div>
+    <div class="your-balance">
+      <div fxLayout="column" fxFlexAlign="start start">
+        <h2 class="your-balance-header">
+          <mat-icon>monetization_on</mat-icon>
+          {{ user.profile.money | currency: defaults.currency.code:"code" }}
+        </h2>
+        <span class="mat-small">Your money</span>
+        <button class="charge-button mat-small" mat-button color="accent" (click)="openChargePlnDialog()">
+          <mat-icon>add_circle</mat-icon>
+          Charge {{defaults.currency.code}}
+        </button>
+      </div>
+    </div>
+  </header>
+  <mat-divider></mat-divider>
+  <section>
+    <h1>Your currencies</h1>
+    <app-account-currency-table [data]="user.currencies" (changed)="getUser()"></app-account-currency-table>
+  </section>
+</div>

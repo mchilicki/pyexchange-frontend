@@ -3,6 +3,8 @@ export class Currency {
     name: string;
     code: string;
     unit: number;
-    sell_price: number;
+    // tslint:disable-next-line:variable-name
+    sell_price?: number;
+    // tslint:disable-next-line:variable-name
     purchase_price: number;
 }

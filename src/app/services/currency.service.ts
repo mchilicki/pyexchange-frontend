@@ -3,7 +3,8 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { CurrencyListItem } from '../models/currency/currency-list-item';
 import { Observable } from 'rxjs';
-import { PagedResult } from '../models/infrastructure/paged-result';
+import { CurrencyAmount } from '../models/currency/currency-amount';
+import { User } from '../models/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,23 @@ export class CurrencyService {
 
   constructor(private client: HttpClient) { }
 
-  getCurrencies(): Observable<PagedResult<CurrencyListItem>> {
-    return this.client.get<PagedResult<CurrencyListItem>>(this.url);
+  getCurrencies(): Observable<CurrencyListItem[]> {
+    return this.client.get<CurrencyListItem[]>(this.url);
+  }
+
+  chargePln(amount: CurrencyAmount): Observable<User> {
+    return this.client.post<User>(`${this.url}/charge_pln/`, amount);
+  }
+
+  chargeForeignCurrency(id: number, amount: CurrencyAmount): Observable<User> {
+    return this.client.post<User>(`${this.url}/${id}/charge_foreign_currency/`, amount);
+  }
+
+  buyCurrency(id: number, amount: CurrencyAmount): Observable<User> {
+    return this.client.post<User>(`${this.url}/${id}/buy/`, amount);
+  }
+
+  sellCurrency(id: number, amount: CurrencyAmount): Observable<User> {
+    return this.client.post<User>(`${this.url}/${id}/sell/`, amount);
   }
 }

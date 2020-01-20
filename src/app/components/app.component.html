@@ -1,7 +1,7 @@
 <div id="MainPage" fxLayout="column">
   <app-nav (menuButtonClick)="openSidenav()"></app-nav>
   <mat-sidenav-container fxFlex autosize>
-    <mat-sidenav class="sidenav" mode="side" opened>
+    <mat-sidenav class="sidenav" mode="side" opened [fxShow.lt-md]="sidenavOpened">
       <app-sidenav [showLabels]="sidenavOpened"></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -10,8 +10,8 @@
           class="mat-typography title-group"
           fxFlex="50"
           fxFlexOffset="25"
-          fxFlex.lt-md="90"
-          fxFlexOffset.lt-md="5"
+          fxFlex.lt-lg="90"
+          fxFlexOffset.lt-lg="5"
         >
           <router-outlet></router-outlet>
         </section>

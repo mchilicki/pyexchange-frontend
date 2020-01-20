@@ -16,4 +16,8 @@ export class UserService {
   register(user: UserUpsert): Observable<User> {
     return this.client.post<User>(`${this.url}/register/`, user);
   }
+
+  get(): Observable<User> {
+    return this.client.get<User>(`${this.url}/get`);
+  }
 }

@@ -1,5 +1,4 @@
-<h1>Currency table</h1>
-<mat-table [dataSource]="data" class="table">
+<mat-table *ngIf="data.length; else noData" [dataSource]="data" class="table">
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
     <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
@@ -7,7 +6,11 @@
 
   <ng-container matColumnDef="code">
     <mat-header-cell *matHeaderCellDef>Code</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element.code }}</mat-cell>
+    <mat-cell *matCellDef="let element">
+      <span [matTooltip]="element.name" matTooltipPosition="above">
+        {{ element.code }}</span
+      ></mat-cell
+    >
   </ng-container>
 
   <ng-container matColumnDef="unit">
@@ -17,9 +20,28 @@
 
   <ng-container matColumnDef="purchase_price">
     <mat-header-cell *matHeaderCellDef>Purchase price</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element.purchase_price }}</mat-cell>
+    <mat-cell *matCellDef="let element">
+      <span [matTooltip]="defaults.currency.name" matTooltipPosition="above">
+        {{
+          element.purchase_price
+            | currency: defaults.currency.code:"code":"1.4-4"
+        }}</span
+      ></mat-cell
+    >
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" ngClass.xs="small-button" (click)="openBuyCurrencyDialog(element)">
+        Buy
+      </button>
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
   <mat-row *matRowDef="let rowData; columns: columnsToDisplay"></mat-row>
 </mat-table>
+<ng-template #noData>
+  <p>There is no data available.</p>
+</ng-template>

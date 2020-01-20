@@ -1,0 +1,61 @@
+<ng-container *ngIf="data">
+  <h2 mat-dialog-title [ngSwitch]="data.operationType">
+    <span *ngSwitchCase="operationType.BUY">Buy</span>
+    <span *ngSwitchCase="operationType.SELL">Sell</span>
+    <span *ngSwitchDefault>Charge</span> currency
+  </h2>
+  <p class="currency-name">
+    {{ data.currency.name }} ({{ data.currency.code }})
+  </p>
+  <mat-dialog-content>
+    <p color="accent" [ngSwitch]="data.operationType">
+      How much money do you want to
+      <span *ngSwitchCase="operationType.BUY">buy</span>
+      <span *ngSwitchCase="operationType.SELL">sell</span>
+      <span *ngSwitchDefault>charge</span>?
+    </p>
+    <form [formGroup]="form">
+      <mat-form-field appearance="fill" fxFill>
+        <mat-label>Amount</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Amount"
+          formControlName="amount"
+          required
+        />
+        <span matSuffix [matTooltip]="data.currency.name">{{
+          data.currency.code
+        }}</span>
+      </mat-form-field>
+    </form>
+    <div *ngIf="form.valid" [ngSwitch]="data.operationType">
+      <p *ngSwitchCase="operationType.BUY">
+        {{ form.get("amount").value }} {{ data.currency.code }} =
+        <strong
+          >{{ form.get("amount").value * data.currency.purchase_price }}
+          {{ defaults.currency.code }}</strong
+        >
+      </p>
+      <p *ngSwitchCase="operationType.SELL">
+        {{ form.get("amount").value }} {{ data.currency.code }} =
+        <strong
+          >{{ form.get("amount").value * data.currency.sell_price }}
+          {{ defaults.currency.code }}</strong
+        >
+      </p>
+      <ng-container *ngSwitchDefault></ng-container>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      [mat-dialog-close]="form.value"
+      [disabled]="form.invalid"
+    >
+      Save
+    </button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</ng-container>

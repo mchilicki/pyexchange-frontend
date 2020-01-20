@@ -9,6 +9,11 @@ body { margin: 0; font-family: Cabin, "Helvetica Neue", sans-serif; }
     @include mat-elevation(4);
 }
 
+.small-button {
+    padding: 0 8px !important;
+    min-width: 30px !important;
+}
+
 .snack-bar-warning {
     background-color: mat-color($pyexchange-warn);
 }

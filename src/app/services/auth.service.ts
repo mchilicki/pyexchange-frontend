@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    return this.client.post<TokenData>(`${this.url}/token/`, { username, password })
+    return this.client.post<TokenData>(`${this.url}/token`, { username, password })
       .pipe(tap(tokenData => {
         if (tokenData && tokenData.access && tokenData.refresh) {
           this.storeTokens(tokenData);
@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   refreshToken() {
-    return this.client.post<TokenData>(`${this.url}/refresh/`, {
+    return this.client.post<TokenData>(`${this.url}/refresh`, {
       refresh: this.getRefreshToken()
     }).pipe(tap((tokenData: TokenData) => {
       this.storeJwtToken(tokenData.access);

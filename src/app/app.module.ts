@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app.component';
@@ -17,6 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -31,6 +35,12 @@ import { LoginComponent } from './components/users/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { VisiblePipe } from './pipes/visible.pipe';
+import { AccountComponent } from './components/account/account.component';
+import { CurrencyPageComponent } from './components/currencies/currency-page/currency-page.component';
+import { AccountCurrencyTableComponent } from './components/account/account-currency-table/account-currency-table.component';
+import { CurrencyDialogComponent } from './components/dialogs/currency-dialog/currency-dialog.component';
+
+registerLocaleData(localePl, 'pl');
 
 @NgModule({
   declarations: [
@@ -39,9 +49,13 @@ import { VisiblePipe } from './pipes/visible.pipe';
     HomeComponent,
     SidenavComponent,
     CurrencyTableComponent,
+    CurrencyPageComponent,
     RegisterComponent,
     LoginComponent,
-    VisiblePipe
+    VisiblePipe,
+    AccountComponent,
+    AccountCurrencyTableComponent,
+    CurrencyDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -59,10 +73,15 @@ import { VisiblePipe } from './pipes/visible.pipe';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [CookieService, CurrencyService, UserService, SnackbarService, AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'pl' }
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ CurrencyDialogComponent]
 })
 export class AppModule { }

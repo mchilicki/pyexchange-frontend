@@ -1,0 +1,78 @@
+<mat-table *ngIf="data.length; else noData" [dataSource]="data" class="table">
+  <ng-container matColumnDef="amount">
+    <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span [matTooltip]="element.currency.name" matTooltipPosition="above">{{
+        element.amount | currency: element.currency.code:"code"
+      }}</span>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="unit">
+    <mat-header-cell *matHeaderCellDef>Unit</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.currency.unit }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="purchase_price">
+    <mat-header-cell *matHeaderCellDef>Purchase price</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span [matTooltip]="defaults.currency.name" matTooltipPosition="above">
+        {{
+          element.currency.purchase_price
+            | currency: defaults.currency.code:"code":"1.4-4"
+        }}
+      </span></mat-cell
+    >
+  </ng-container>
+
+  <ng-container matColumnDef="sell_price">
+    <mat-header-cell *matHeaderCellDef>Sell price</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span [matTooltip]="defaults.currency.name" matTooltipPosition="above">
+        {{
+          element.currency.sell_price
+            | currency: defaults.currency.code:"code":"1.4-4"
+        }}
+      </span></mat-cell
+    >
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <div fxLayout="row">
+        <button
+          mat-raised-button
+          color="primary"
+          ngClass.xs="small-button"
+          (click)="openBuyCurrencyDialog(element.currency)"
+        >
+          Buy
+        </button>
+        <button
+          mat-button
+          color="primary"
+          ngClass.xs="small-button"
+          (click)="openSellCurrencyDialog(element.currency)"
+        >
+          Sell
+        </button>
+        <button
+          class="charge-button mat-small"
+          mat-button
+          matTooltip="Charge currency"
+          color="accent"
+          (click)="openChargeForeignCurrencyDialog(element.currency)"
+        >
+          <mat-icon>add_circle</mat-icon>
+        </button>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let rowData; columns: columnsToDisplay"></mat-row>
+</mat-table>
+<ng-template #noData>
+  <p>There is no data available.</p>
+</ng-template>

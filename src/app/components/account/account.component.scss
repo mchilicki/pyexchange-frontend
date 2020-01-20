@@ -1,0 +1,16 @@
+:host {
+    .your-balance {
+        .your-balance-header {
+            margin-bottom: 0;
+            .mat-icon {
+                font-size: 1.3rem;
+                width: 1.3rem;
+                vertical-align: middle;
+            }
+        }
+
+        .charge-button {
+            text-align: left;
+        }
+    }
+}
