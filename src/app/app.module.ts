@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -39,6 +40,8 @@ import { AccountComponent } from './components/account/account.component';
 import { CurrencyPageComponent } from './components/currencies/currency-page/currency-page.component';
 import { AccountCurrencyTableComponent } from './components/account/account-currency-table/account-currency-table.component';
 import { CurrencyDialogComponent } from './components/dialogs/currency-dialog/currency-dialog.component';
+import { MapComponent } from './components/map/map.component';
+
 
 registerLocaleData(localePl, 'pl');
 
@@ -55,7 +58,8 @@ registerLocaleData(localePl, 'pl');
     VisiblePipe,
     AccountComponent,
     AccountCurrencyTableComponent,
-    CurrencyDialogComponent
+    CurrencyDialogComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,8 @@ registerLocaleData(localePl, 'pl');
     MatInputModule,
     MatSnackBarModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    GoogleMapsModule
   ],
   providers: [CookieService, CurrencyService, UserService, SnackbarService, AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

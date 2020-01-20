@@ -1,0 +1,79 @@
+{
+  "center": {
+    "lat": 52.230811,
+    "lng": 19.362682
+  },
+  "zoom": 6,
+  "markers": [
+    {
+      "position": {
+        "lat": 51.799149,
+        "lng": 19.464269
+      },
+      "title": "Łódź"
+    },
+    {
+      "position": {
+        "lat": 50.264893,
+        "lng": 19.023781
+      },
+      "title": "Katowice"
+    },
+    {
+      "position": {
+        "lat": 50.292961,
+        "lng": 18.668930
+      },
+      "title": "Gliwice"
+    },
+    {
+      "position": {
+        "lat": 52.229675,
+        "lng": 21.012230
+      },
+      "title": "Warszawa"
+    },
+    {
+      "position": {
+        "lat": 51.107883,
+        "lng": 17.038538
+      },
+      "title": "Wrocław"
+    },
+    {
+      "position": {
+        "lat": 52.406376,
+        "lng": 16.925167
+      },
+      "title": "Poznań"
+    },
+    {
+      "position": {
+        "lat": 50.064651,
+        "lng": 19.944981
+      },
+      "title": "Kraków"
+    },
+    {
+      "position": {
+        "lat": 54.352024,
+        "lng": 18.646639
+      },
+      "title": "Gdańsk"
+    },
+    {
+      "position": {
+        "lat": 53.428543,
+        "lng": 14.552812
+      },
+      "title": "Szczecin"
+    },
+    {
+      "position": {
+        "lat": 50.869930,
+        "lng": 20.640961
+      },
+      "title": "Kielce"
+    }
+  ]
+}
