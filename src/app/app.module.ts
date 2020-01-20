@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -35,6 +36,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { VisiblePipe } from './pipes/visible.pipe';
 import { AccountComponent } from './components/account/account.component';
 import { CurrencyPageComponent } from './components/currencies/currency-page/currency-page.component';
+import { AccountCurrencyTableComponent } from './components/account/account-currency-table/account-currency-table.component';
 
 registerLocaleData(localePl, 'pl');
 
@@ -49,7 +51,8 @@ registerLocaleData(localePl, 'pl');
     RegisterComponent,
     LoginComponent,
     VisiblePipe,
-    AccountComponent
+    AccountComponent,
+    AccountCurrencyTableComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ registerLocaleData(localePl, 'pl');
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   providers: [CookieService, CurrencyService, UserService, SnackbarService, AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

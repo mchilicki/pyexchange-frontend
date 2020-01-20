@@ -5,5 +5,5 @@ export class User {
     id: number;
     username: string;
     profile: Profile;
-    currencies: UserCurrency;
+    currencies: UserCurrency[];
 }
