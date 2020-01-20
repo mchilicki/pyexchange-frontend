@@ -38,7 +38,7 @@ import { VisiblePipe } from './pipes/visible.pipe';
 import { AccountComponent } from './components/account/account.component';
 import { CurrencyPageComponent } from './components/currencies/currency-page/currency-page.component';
 import { AccountCurrencyTableComponent } from './components/account/account-currency-table/account-currency-table.component';
-import { ChargeCurrencyDialogComponent } from './components/dialogs/charge-currency-dialog/charge-currency-dialog.component';
+import { CurrencyDialogComponent } from './components/dialogs/currency-dialog/currency-dialog.component';
 
 registerLocaleData(localePl, 'pl');
 
@@ -55,7 +55,7 @@ registerLocaleData(localePl, 'pl');
     VisiblePipe,
     AccountComponent,
     AccountCurrencyTableComponent,
-    ChargeCurrencyDialogComponent
+    CurrencyDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +82,6 @@ registerLocaleData(localePl, 'pl');
     { provide: LOCALE_ID, useValue: 'pl' }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ChargeCurrencyDialogComponent]
+  entryComponents: [ CurrencyDialogComponent]
 })
 export class AppModule { }

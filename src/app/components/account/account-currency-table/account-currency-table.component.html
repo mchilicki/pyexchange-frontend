@@ -41,10 +41,20 @@
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let element">
       <div fxLayout="row">
-        <button mat-raised-button color="primary" ngClass.xs="small-button">
+        <button
+          mat-raised-button
+          color="primary"
+          ngClass.xs="small-button"
+          (click)="openBuyCurrencyDialog(element.currency)"
+        >
           Buy
         </button>
-        <button mat-button color="primary" ngClass.xs="small-button">
+        <button
+          mat-button
+          color="primary"
+          ngClass.xs="small-button"
+          (click)="openSellCurrencyDialog(element.currency)"
+        >
           Sell
         </button>
         <button

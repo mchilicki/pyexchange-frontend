@@ -20,6 +20,6 @@
   <mat-divider></mat-divider>
   <section>
     <h1>Your currencies</h1>
-    <app-account-currency-table [data]="user.currencies"></app-account-currency-table>
+    <app-account-currency-table [data]="user.currencies" (changed)="getUser()"></app-account-currency-table>
   </section>
 </div>
