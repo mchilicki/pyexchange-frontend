@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -37,6 +38,7 @@ import { VisiblePipe } from './pipes/visible.pipe';
 import { AccountComponent } from './components/account/account.component';
 import { CurrencyPageComponent } from './components/currencies/currency-page/currency-page.component';
 import { AccountCurrencyTableComponent } from './components/account/account-currency-table/account-currency-table.component';
+import { ChargePlnDialogComponent } from './components/dialogs/charge-pln-dialog/charge-pln-dialog.component';
 
 registerLocaleData(localePl, 'pl');
 
@@ -52,7 +54,8 @@ registerLocaleData(localePl, 'pl');
     LoginComponent,
     VisiblePipe,
     AccountComponent,
-    AccountCurrencyTableComponent
+    AccountCurrencyTableComponent,
+    ChargePlnDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,12 +74,14 @@ registerLocaleData(localePl, 'pl');
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [CookieService, CurrencyService, UserService, SnackbarService, AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'pl' }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ChargePlnDialogComponent]
 })
 export class AppModule { }

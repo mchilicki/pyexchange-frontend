@@ -10,7 +10,7 @@
           {{ user.profile.money | currency: "PLN":"code" }}
         </h2>
         <span class="mat-small">Your money</span>
-        <button class="charge-button mat-small" mat-button color="accent">
+        <button class="charge-button mat-small" mat-button color="accent" (click)="openChargePlnDialog()">
           <mat-icon>add_circle</mat-icon>
           Charge PLN
         </button>

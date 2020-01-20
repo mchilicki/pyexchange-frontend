@@ -16,6 +16,7 @@
           #usernameInput
           placeholder="User name"
           formControlName="username"
+          required
         />
         <mat-hint align="end"
           >{{ usernameInput.value?.length || 0 }}/150</mat-hint
@@ -23,7 +24,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>E-mail</mat-label>
-        <input matInput placeholder="E-mail" formControlName="email" />
+        <input matInput placeholder="E-mail" formControlName="email" required />
       </mat-form-field>
       <mat-form-field
         appearance="fill"
@@ -36,6 +37,7 @@
           type="password"
           placeholder="Password"
           formControlName="password"
+          required
         />
         <mat-hint align="end"
           >{{ passwordInput.value?.length || 0 }}/30</mat-hint

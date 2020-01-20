@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Charge PLN</h2>
+<mat-dialog-content>
+  <p>How much money do you want to charge?</p>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill" fxFill>
+      <mat-label>Amount</mat-label>
+      <input
+        matInput
+        type="number"
+        placeholder="Amount"
+        formControlName="amount"
+        required
+      />
+      <span matSuffix>PLN</span>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="form.value"
+    [disabled]="!form.valid && form.untouched"
+  >
+    Save
+  </button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
