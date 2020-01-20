@@ -7,16 +7,12 @@
       <div fxLayout="column" fxFlexAlign="start start">
         <h2 class="your-balance-header">
           <mat-icon>monetization_on</mat-icon>
-          {{ user.profile.money | currency: "PLN":"code" }}
+          {{ user.profile.money | currency: defaults.currency.code:"code" }}
         </h2>
         <span class="mat-small">Your money</span>
         <button class="charge-button mat-small" mat-button color="accent" (click)="openChargePlnDialog()">
           <mat-icon>add_circle</mat-icon>
-          Charge PLN
-        </button>
-        <button class="charge-button mat-small" mat-button color="accent">
-          <mat-icon>add_circle</mat-icon>
-          Charge foreign currency
+          Charge {{defaults.currency.code}}
         </button>
       </div>
     </div>

@@ -15,24 +15,47 @@
 
   <ng-container matColumnDef="purchase_price">
     <mat-header-cell *matHeaderCellDef>Purchase price</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{
-      element.currency.purchase_price | currency: "PLN":"code":"1.4-4"
-    }}</mat-cell>
+    <mat-cell *matCellDef="let element">
+      <span [matTooltip]="defaults.currency.name" matTooltipPosition="above">
+        {{
+          element.currency.purchase_price
+            | currency: defaults.currency.code:"code":"1.4-4"
+        }}
+      </span></mat-cell
+    >
   </ng-container>
 
   <ng-container matColumnDef="sell_price">
     <mat-header-cell *matHeaderCellDef>Sell price</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{
-      element.currency.sell_price | currency: "PLN":"code":"1.4-4"
-    }}</mat-cell>
+    <mat-cell *matCellDef="let element">
+      <span [matTooltip]="defaults.currency.name" matTooltipPosition="above">
+        {{
+          element.currency.sell_price
+            | currency: defaults.currency.code:"code":"1.4-4"
+        }}
+      </span></mat-cell
+    >
   </ng-container>
 
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
     <mat-cell *matCellDef="let element">
       <div fxLayout="row">
-        <button mat-raised-button color="primary" ngClass.xs="small-button">Buy</button>
-        <button mat-button color="primary" ngClass.xs="small-button">Sell</button>
+        <button mat-raised-button color="primary" ngClass.xs="small-button">
+          Buy
+        </button>
+        <button mat-button color="primary" ngClass.xs="small-button">
+          Sell
+        </button>
+        <button
+          class="charge-button mat-small"
+          mat-button
+          matTooltip="Charge currency"
+          color="accent"
+          (click)="openChargeForeignCurrencyDialog(element.currency)"
+        >
+          <mat-icon>add_circle</mat-icon>
+        </button>
       </div>
     </mat-cell>
   </ng-container>

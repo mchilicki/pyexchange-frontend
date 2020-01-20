@@ -1,6 +1,12 @@
-<h2 mat-dialog-title>Charge PLN</h2>
+<ng-container *ngIf="data">
+<h2 mat-dialog-title>Charge currency</h2>
+<p class="currency-name">
+  {{ data.name }} ({{
+    data.code
+  }})
+</p>
 <mat-dialog-content>
-  <p>How much money do you want to charge?</p>
+  <p color="accent">How much money do you want to charge?</p>
   <form [formGroup]="form">
     <mat-form-field appearance="fill" fxFill>
       <mat-label>Amount</mat-label>
@@ -11,7 +17,9 @@
         formControlName="amount"
         required
       />
-      <span matSuffix>PLN</span>
+      <span matSuffix [matTooltip]="data.name">{{
+        data.code
+      }}</span>
     </mat-form-field>
   </form>
 </mat-dialog-content>
@@ -20,9 +28,10 @@
     mat-raised-button
     color="primary"
     [mat-dialog-close]="form.value"
-    [disabled]="!form.valid && form.untouched"
+    [disabled]="form.invalid"
   >
     Save
   </button>
   <button mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>
+</ng-container>

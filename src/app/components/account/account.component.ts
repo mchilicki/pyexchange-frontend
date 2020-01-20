@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user/user';
 import { MatDialog } from '@angular/material/dialog';
-import { ChargePlnDialogComponent } from '../dialogs/charge-pln-dialog/charge-pln-dialog.component';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { CurrencyAmount } from 'src/app/models/currency/currency-amount';
+import { ChargeCurrencyDialogComponent } from '../dialogs/charge-currency-dialog/charge-currency-dialog.component';
+import { defaults } from 'src/app/common/defaults';
+import { SnackbarService } from 'src/app/services/infrastructure/snack-bar.service';
 
 @Component({
   selector: 'app-account',
@@ -13,9 +15,11 @@ import { CurrencyAmount } from 'src/app/models/currency/currency-amount';
 })
 export class AccountComponent implements OnInit {
   user: User;
+  defaults = defaults;
 
   constructor(private userService: UserService,
               private currencyService: CurrencyService,
+              private snackBarService: SnackbarService,
               private dialog: MatDialog) { }
 
   ngOnInit() {
@@ -25,12 +29,17 @@ export class AccountComponent implements OnInit {
   }
 
   openChargePlnDialog() {
-    const dialogRef = this.dialog.open(ChargePlnDialogComponent);
+    const dialogRef = this.dialog.open(ChargeCurrencyDialogComponent, {
+      data: defaults.currency
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.currencyService.chargePln(result as CurrencyAmount).subscribe(data => {
           this.user = data;
+          this.snackBarService.openSnackBar(`Account charged for ${result.amount} ${defaults.currency.code}`);
+        }, error => {
+          this.snackBarService.openSnackBar(error.statusText, 'Dismiss', true);
         });
       }
     });

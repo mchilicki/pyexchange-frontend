@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CurrencyListItem } from 'src/app/models/currency/currency-list-item';
+import { defaults } from 'src/app/common/defaults';
 
 @Component({
   selector: 'app-currency-table',
@@ -9,6 +10,7 @@ import { CurrencyListItem } from 'src/app/models/currency/currency-list-item';
 export class CurrencyTableComponent implements OnInit {
   @Input() data: CurrencyListItem[] = [];
   columnsToDisplay = ['name', 'code', 'unit', 'purchase_price', 'actions'];
+  defaults = defaults;
 
   constructor() { }
 

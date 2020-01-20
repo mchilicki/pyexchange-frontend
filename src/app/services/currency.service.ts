@@ -21,4 +21,8 @@ export class CurrencyService {
   chargePln(amount: CurrencyAmount): Observable<User> {
     return this.client.post<User>(`${this.url}/charge_pln/`, amount);
   }
+
+  chargeForeignCurrency(id: number, amount: CurrencyAmount): Observable<User> {
+    return this.client.post<User>(`${this.url}/${id}/charge_foreign_currency/`, amount);
+  }
 }
