@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserUpsert } from 'src/app/models/user/user-upsert';
 import { UserService } from 'src/app/services/user.service';
 import { SnackbarService as SnackBarService } from 'src/app/services/infrastructure/snack-bar.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +16,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(fb: FormBuilder,
               private userService: UserService,
-              private snackBarService: SnackBarService) {
+              private authService: AuthService,
+              private snackBarService: SnackBarService,
+              private router: Router) {
     this.form = fb.group({
       username: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(150), Validators.pattern('^[\\w.@+-]+$')]],
       email: ['', [Validators.required, Validators.email]],
@@ -33,6 +37,9 @@ export class RegisterComponent implements OnInit {
       const user = this.form.value as UserUpsert;
       this.userService.register(user).subscribe(data => {
         this.snackBarService.openSnackBar('User registered successfully');
+        this.authService.login(user.username, user.password).subscribe(_ => {
+          this.router.navigate(['/account']);
+        });
       }, error => {
         this.snackBarService.openSnackBar(error.statusText, 'Dismiss', true);
       });
