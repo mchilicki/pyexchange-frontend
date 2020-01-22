@@ -10,7 +10,7 @@ import { MapComponent } from './components/map/map.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: CurrencyPageComponent, pathMatch: 'full' },
   { path: 'currencies', component: CurrencyPageComponent },
   { path: 'map', component: MapComponent },
   { path: 'register', component: RegisterComponent },

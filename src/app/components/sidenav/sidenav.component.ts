@@ -27,7 +27,6 @@ export class SidenavComponent implements OnInit {
 
   getNavItems() {
     this.navItems = [
-      new NavItem({ name: 'Home', icon: 'home', path: '' }),
       new NavItem({ name: 'Currency table', icon: 'attach_money', path: 'currencies' }),
       new NavItem({ name: 'Agency locator', icon: 'near_me', path: 'map' }),
       new NavItem({ name: 'My account', icon: 'person', path: 'account', visible: this.loggedIn }),
