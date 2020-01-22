@@ -1,10 +1,14 @@
 :host {
-    .icon {
-        width: 1.6rem;
-        height: 1.6rem;
-    }
+    .nav-item {
+        user-select: none;
+        
+        .icon {
+            width: 1.6rem;
+            height: 1.6rem;
+        }
 
-    .label {
-        padding-left: 0.5rem;
+        .label {
+            padding-left: 0.5rem;
+        }
     }
 }

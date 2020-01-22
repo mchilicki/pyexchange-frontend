@@ -41,6 +41,7 @@ import { CurrencyPageComponent } from './components/currencies/currency-page/cur
 import { AccountCurrencyTableComponent } from './components/account/account-currency-table/account-currency-table.component';
 import { CurrencyDialogComponent } from './components/dialogs/currency-dialog/currency-dialog.component';
 import { MapComponent } from './components/map/map.component';
+import { MAT_HAMMER_OPTIONS } from '@angular/material/core';
 
 
 registerLocaleData(localePl, 'pl');
@@ -84,9 +85,17 @@ registerLocaleData(localePl, 'pl');
   ],
   providers: [CookieService, CurrencyService, UserService, SnackbarService, AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: LOCALE_ID, useValue: 'pl' }
+    { provide: LOCALE_ID, useValue: 'pl' },
+    {
+      provide: MAT_HAMMER_OPTIONS,
+      useValue: {
+        cssProps: {
+          userSelect: true
+        }
+      }
+    }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ CurrencyDialogComponent]
+  entryComponents: [CurrencyDialogComponent]
 })
 export class AppModule { }
