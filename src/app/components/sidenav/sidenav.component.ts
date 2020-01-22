@@ -29,6 +29,7 @@ export class SidenavComponent implements OnInit {
     this.navItems = [
       new NavItem({ name: 'Home', icon: 'home', path: '' }),
       new NavItem({ name: 'Currency table', icon: 'attach_money', path: 'currencies' }),
+      new NavItem({ name: 'Agency locator', icon: 'near_me', path: 'map' }),
       new NavItem({ name: 'My account', icon: 'person', path: 'account', visible: this.loggedIn }),
       new NavItem({ name: 'Sign in', icon: 'exit_to_app', path: 'login', visible: !this.loggedIn }),
       new NavItem({ name: 'Sign out', icon: 'power_settings_new', action: () => this.logout(), visible: this.loggedIn }),

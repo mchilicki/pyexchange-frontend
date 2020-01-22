@@ -1,0 +1,9 @@
+<h1>Our agencies</h1>
+<google-map [center]="center" [zoom]="zoom" width="100%">
+  <map-marker
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [title]="marker.title"
+  >
+  </map-marker>
+</google-map>

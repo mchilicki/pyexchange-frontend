@@ -6,11 +6,13 @@ import { LoginComponent } from './components/users/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AccountComponent } from './components/account/account.component';
 import { CurrencyPageComponent } from './components/currencies/currency-page/currency-page.component';
+import { MapComponent } from './components/map/map.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'currencies', component: CurrencyPageComponent },
+  { path: 'map', component: MapComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
